@@ -1,16 +1,14 @@
-This is a template git repo suitable for building a Womble-compliant gem.
-If you're reading this text in a released gem, or a git repo that isn't
-`gemplate`, someone needs to write some documentation.
+Simple helpers for manipulating a Rack application response.
 
 # Installation
 
 It's a gem:
 
-    gem install gemplate
+    gem install clutterbuck-response
 
 There's also the wonders of [the Gemfile](http://bundler.io):
 
-    gem 'gemplate'
+    gem 'clutterbuck-response'
 
 If you're the sturdy type that likes to run from git:
 
@@ -22,18 +20,25 @@ presumably know what to do already.
 
 # Usage
 
-Examples go here.
+Load the code:
 
-Hopefully that should all be fairly self-explanatory.  If not, well, there's
-more detailed documentation in the auto-generated YARD docs.
+    request 'clutterbuck-response'
+
+Include the module in your application:
+
+    class MyExampleApp
+      include Clutterbuck::Response
+    end
+
+Then call any of the methods in {Clutterbuck::Response} to do the needful.
 
 
 # Contributing
 
 Bug reports should be sent to the [Github issue
-tracker](https://github.com/mpalmer/gemplate/issues), or
-[e-mailed](mailto:theshed+gemplate@hezmatt.org).  Patches can be sent as a
-Github pull request, or [e-mailed](mailto:theshed+gemplate@hezmatt.org).
+tracker](https://github.com/mpalmer/clutterbuck-response/issues), or
+[e-mailed](mailto:theshed+clutterbuck@hezmatt.org).  Patches can be sent as a
+Github pull request, or [e-mailed](mailto:theshed+clutterbuck@hezmatt.org).
 
 
 # Licence

@@ -1,7 +1,7 @@
 require 'git-version-bump' rescue nil
 
 Gem::Specification.new do |s|
-	s.name = "gemplate"
+	s.name = "clutterbuck-response"
 
 	s.version = GVB.version rescue "0.0.0.1.NOGVB"
 	s.date    = GVB.date    rescue Time.now.strftime("%Y-%m-%d")
@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
 	s.summary  = "A template gem"
 
 	s.authors  = ["Matt Palmer"]
-	s.email    = ["theshed+gemplate@hezmatt.org"]
-	s.homepage = "http://theshed.hezmatt.org/gemplate"
+	s.email    = ["theshed+clutterbuck@hezmatt.org"]
+	s.homepage = "http://theshed.hezmatt.org/clutterbuck"
 
 	s.files = `git ls-files -z`.split("\0").reject { |f| f =~ /^(G|spec|Rakefile)/ }
 
