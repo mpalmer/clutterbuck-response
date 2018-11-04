@@ -113,4 +113,46 @@ describe Clutterbuck::Response do
 			expect(app.get_header("X-womble")).to eq(%w{awesome amazing})
 		end
 	end
+
+	context "#set_body" do
+		it "exists" do
+			expect { app.set_body "" }.to_not raise_error
+		end
+
+		it "returns a string body in an array" do
+			app.set_body ""
+
+			expect(body).to eq([""])
+		end
+
+		it "returns an array body exactly as set" do
+			app.set_body ["ohai!"]
+
+			expect(body).to eq(["ohai!"])
+		end
+	end
+
+	context "#redirect" do
+		it "exists" do
+			expect { app.redirect "/" }.to_not raise_error
+		end
+
+		it "sets the status" do
+			app.redirect "/"
+
+			expect(status).to eq(303)
+		end
+
+		it "sets the Location header" do
+			app.redirect "/foobooblee"
+
+			expect(headers).to eq([["location", "/foobooblee"]])
+		end
+
+		it "sets an empty body" do
+			app.redirect "/foobooblee"
+
+			expect(body).to eq([""])
+		end
+	end
 end

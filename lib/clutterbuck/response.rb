@@ -84,7 +84,7 @@ module Clutterbuck::Response
 	# @return [nil]
 	#
 	def set_body(body)
-		@body = body.respond_to(:each) ? body : [body]
+		@body = body.respond_to?(:each) ? body : [body]
 	end
 
 	# Convenience method for defining a temporary redirect.
