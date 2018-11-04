@@ -75,6 +75,29 @@ module Clutterbuck::Response
 		@headers.select { |h| h[0] == name }.map { |h| h[1] }
 	end
 
+	# Set the response body.
+	#
+	# Any ol' string or array you might like to create.
+	#
+	# @param body [String, Array<#to_s>] the body to set.
+	#
+	# @return [nil]
+	#
+	def set_body(body)
+		@body = body.respond_to(:each) ? body : [body]
+	end
+
+	# Convenience method for defining a temporary redirect.
+	#
+	# Redirecting a request to a new URL is such a common operation that
+	# it's nice to be able to do it in one call, rather than two.
+	#
+	def redirect(url)
+		status 303
+		set_header "Location", url
+		set_body ""
+	end
+
 	#:nodoc:
 	#
 	# Override the default `call` method which (we hope) the application is
@@ -97,6 +120,10 @@ module Clutterbuck::Response
 		if @headers
 			h = h.to_a
 			h += @headers
+		end
+
+		if @body
+			b = @body
 		end
 
 		[s, h, b]
